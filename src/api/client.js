@@ -1,6 +1,14 @@
 // A tiny wrapper around fetch(), borrowed from
 // https://kentcdodds.com/blog/replace-axios-with-a-simple-custom-fetch-wrapper
 
+function sleep(milliseconds) {
+  const date = Date.now()
+  let currentDate = null
+  do {
+    currentDate = Date.now()
+  } while (currentDate - date < milliseconds)
+}
+
 export async function client(endpoint, { body, ...customConfig } = {}) {
   const headers = { 'Content-Type': 'application/json' }
 
@@ -21,6 +29,7 @@ export async function client(endpoint, { body, ...customConfig } = {}) {
   try {
     const response = await window.fetch(endpoint, config)
     data = await response.json()
+    sleep(2000)
     if (response.ok) {
       // Return a result object similar to Axios
       return {
