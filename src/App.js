@@ -12,6 +12,8 @@ import { PostsList } from './features/posts/PostList.js'
 import { AddPostForm } from './features/posts/AddPostForm.js'
 import { SinglePostPage } from './features/posts/SinglePostPage.js'
 import { EditPostForm } from './features/posts/EditPostForm.js'
+import { UsersList } from './features/users/UserList.js'
+import { UserPage } from './features/users/UserPage.js'
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
           />
           <Route path="/posts/:postId" Component={SinglePostPage} />
           <Route path="/editPost/:postId" Component={EditPostForm} />
+          <Route path="/users" Component={UsersList} />
+          <Route path="/users/:userId" Component={UserPage} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
